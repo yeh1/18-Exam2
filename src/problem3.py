@@ -25,9 +25,9 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
 
-    # run_test_init()
-    # run_test_rain()
-    # run_test_get_total_rain_amount()
+    run_test_init()
+    run_test_rain()
+    #run_test_get_total_rain_amount()
     # run_test_merge_cloud()
 
 
@@ -76,8 +76,13 @@ class Cloud(object):
           :type water: int | float
         """
         # ---------------------------------------------------------------------
-        # TODO: 2. Implement and test this method.
+        # Done: 2. Implement and test this method.
         # ---------------------------------------------------------------------
+        self.capacity = capacity
+        if capacity < water:
+            self.water = capacity
+        else:
+            self.water = water
 
     def rain(self, rain_amount):
         """
@@ -124,7 +129,17 @@ class Cloud(object):
         # ---------------------------------------------------------------------
         # TODO: 3. Implement and test this method.
         # ---------------------------------------------------------------------
+        if self.water > rain_amount:
+            s = self.water - rain_amount
+            self.water = s
 
+            return rain_amount
+        else:
+            self.water = 0
+            if self.water > self.capacity:
+                return self.capacity
+            else:
+                return self.water
 
     def get_total_rain_amount(self):
         """
